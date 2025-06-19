@@ -5,9 +5,15 @@ import backIcon from "@/assets/icon/backIcon.svg";
 import CurrentAddress from "../CurrentAddress";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { useRecommendStore } from "@/store/useRecommendStore";
+import { useEffect } from "react";
 
 export default function RecommendResult() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!useRecommendStore.getState().recommend) navigate("/");
+  }, []);
 
   return (
     <div className="flex flex-col gap-10 relative">

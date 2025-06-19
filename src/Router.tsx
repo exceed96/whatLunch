@@ -3,6 +3,7 @@ import Layout from "./components/Layout/Layout";
 import HomePage from "./pages/HomePage";
 import ResultPage from "./pages/ResultPage";
 import TasteSurveyPage from "./pages/TasteSurveyPage";
+import NotFound from "./components/Error/NotFound";
 
 const Router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const Router = createBrowserRouter([
         path: "/taste",
         element: <TasteSurveyPage />,
       },
+      { path: "*", element: <NotFound /> },
     ],
   },
 ]);
