@@ -1,3 +1,5 @@
+// 에러 페이지
+
 import logoIcon from "@/assets/icon/lunchIcon.svg";
 import { Button } from "../ui/button";
 import { useNavigate } from "react-router-dom";
