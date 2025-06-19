@@ -18,7 +18,6 @@ export default function Main() {
   const getSuccess = (position: GeolocationPosition) => {
     const lat = String(position.coords.latitude);
     const lng = String(position.coords.longitude);
-    console.log(lat, lng);
     setLocation(lat, lng);
   };
 
