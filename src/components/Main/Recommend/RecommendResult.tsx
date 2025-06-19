@@ -6,21 +6,6 @@ import CurrentAddress from "../CurrentAddress";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
-const dummyData = [
-  {
-    id: 1,
-    price: "10,000",
-  },
-  {
-    id: 2,
-    price: "20,000",
-  },
-  {
-    id: 3,
-    price: "50,000",
-  },
-];
-
 export default function RecommendResult() {
   const navigate = useNavigate();
 
@@ -39,9 +24,9 @@ export default function RecommendResult() {
       </div>
       <CurrentAddress />
       <ul className="w-full flex flex-col gap-20">
-        {dummyData.map((item) => (
-          <PriceList key={item.id} price={item.price} />
-        ))}
+        <PriceList type="low" />
+        <PriceList type="middle" />
+        <PriceList type="high" />
       </ul>
       <Button
         className="sticky bottom-1 right-0 z-20 text-xl lg:text-3xl py-7 bg-orange-800 text-white"

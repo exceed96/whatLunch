@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import CurrentLocationIcon from "@/assets/icon/currentLocationIcon.svg";
+import { useLocation } from "@/store/useLocation";
 
 export default function CurrentAddress() {
-  const [isError, setIsError] = useState(false);
+  const [isError] = useState(false);
 
   return (
     <section className="flex flex-col gap-2 px-2 rounded-lg items-center border-2 border-black py-1 w-full">
@@ -15,7 +16,7 @@ export default function CurrentAddress() {
       <p className="text-xl lg:text-2xl">
         {isError
           ? "위치 정보를 불러올수 없습니다."
-          : "서울특별시 강남구 역삼동"}
+          : useLocation.getState().currentAddress}
       </p>
     </section>
   );

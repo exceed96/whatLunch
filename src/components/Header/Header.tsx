@@ -1,7 +1,5 @@
 // 헤더 컴포넌트
 
-import { Button } from "@/components/ui/button";
-
 export default function Header() {
   return (
     <header className="w-full flex justify-between items-center relative py-8">
