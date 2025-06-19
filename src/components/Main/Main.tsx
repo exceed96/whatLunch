@@ -48,8 +48,8 @@ export default function Main() {
           inputs: {
             latitude: useLocation.getState().latitude,
             longitude: useLocation.getState().longitude,
-            order: "매운거",
-            persona: "자극적인거",
+            order: "라면",
+            persona: "맑은 국물을 좋아해",
           },
           user: "yub",
         }),
