@@ -48,15 +48,14 @@ export default function Main() {
           inputs: {
             latitude: useLocation.getState().latitude,
             longitude: useLocation.getState().longitude,
-            order: "라면",
-            persona: "맑은 국물을 좋아해",
+            order: "마라탕",
+            persona: "",
           },
           user: "yub",
         }),
       });
 
       const data = await response.json();
-      console.log(JSON.parse(data.data.outputs.result));
       setRecommend(JSON.parse(data.data.outputs.result).recommendations);
       setCurrentAddress(JSON.parse(data.data.outputs.result).address);
     } catch (error) {

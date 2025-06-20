@@ -1,5 +1,6 @@
 // 추천 결과 컴포넌트
 
+import { useState } from "react";
 import PriceList from "./PriceList";
 import backIcon from "@/assets/icon/backIcon.svg";
 import CurrentAddress from "../CurrentAddress";
@@ -10,6 +11,7 @@ import { useEffect } from "react";
 
 export default function RecommendResult() {
   const navigate = useNavigate();
+  const [isClick, setIsClick] = useState(false);
 
   useEffect(() => {
     if (!useRecommendStore.getState().recommend) navigate("/");
@@ -37,10 +39,10 @@ export default function RecommendResult() {
       <Button
         className="sticky bottom-1 right-0 z-20 text-xl lg:text-3xl py-7 bg-orange-800 text-white"
         onClick={() => {
-          navigate("/taste");
+          setIsClick(true);
         }}
       >
-        AI기반 식당 추천
+        <p>{isClick ? "Coming Soon!" : "AI기반 식당 추천"}</p>
       </Button>
       {/* 취향 조사 버튼 구성 필요(로컬 taste 구성에 따라 추가 필요)*/}
     </div>
