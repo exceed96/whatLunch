@@ -56,6 +56,7 @@ export default function Main() {
       });
 
       const data = await response.json();
+      console.log(JSON.parse(data.data.outputs.result));
       setRecommend(JSON.parse(data.data.outputs.result).recommendations);
       setCurrentAddress(JSON.parse(data.data.outputs.result).address);
     } catch (error) {
