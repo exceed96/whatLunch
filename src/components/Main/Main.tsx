@@ -48,7 +48,7 @@ export default function Main() {
           inputs: {
             latitude: useLocation.getState().latitude,
             longitude: useLocation.getState().longitude,
-            order: "마라탕",
+            order: "",
             persona: "",
           },
           user: "yub",
