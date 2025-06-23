@@ -10,11 +10,11 @@ type TPriceList = {
 export default function PriceList({ type }: TPriceList) {
   const recommend = useRecommendStore((state) => state.recommend);
 
-  const priceLevel = {
-    low: "10,000원 이하",
-    middle: "20,000원 이하",
-    high: "30,000원 이하",
-  };
+  // const priceLevel = {
+  //   low: "10,000원 이하",
+  //   middle: "20,000원 이하",
+  //   high: "30,000원 이하",
+  // };
 
   return (
     <li className="w-full flex flex-col gap-6">
