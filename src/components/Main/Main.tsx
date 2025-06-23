@@ -50,7 +50,6 @@ export default function Main() {
             latitude: useLocation.getState().latitude,
             longitude: useLocation.getState().longitude,
             order: orderRef.current?.value,
-            persona: "",
           },
           user: "yub",
         }),

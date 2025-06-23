@@ -43,7 +43,9 @@ export default function RestaurantList({ store, none }: TRestaurantList) {
             <a
               className="text-orange-700 hover:bg-orange-700 hover:text-white text-md lg:text-2xl py-1 lg:py-2 px-4 lg:px-6 rounded-xl cursor-pointer"
               target="_blank"
-              href={`https://map.naver.com/p/search/${store.title}`}
+              href={`https://map.naver.com/p/search/${parseContent(
+                store.title
+              )}`}
             >
               위치보기
             </a>
