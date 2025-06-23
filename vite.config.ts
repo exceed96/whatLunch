@@ -62,12 +62,4 @@ export default defineConfig({
   server: {
     host: true,
   },
-  // build: {
-  //   rollupOptions: {
-  //     input: {
-  //       main: "./index.html",
-  //       sw: "./dist/sw.js",
-  //     },
-  //   },
-  // },
 });

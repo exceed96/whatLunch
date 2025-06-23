@@ -37,7 +37,6 @@ export default function Main() {
   }, []);
 
   const submitButtonHandler = async () => {
-    console.log(orderRef.current?.value);
     try {
       setIsLoading(true);
       const response = await fetch(`${import.meta.env.VITE_SERVER_API_CALL}`, {
@@ -84,17 +83,17 @@ export default function Main() {
             onSubmit={submitButtonHandler}
           >
             <label htmlFor="order" className="text-xl lg:text-2xl">
-              끌리는거는?
+              끌리는거?
             </label>
             <input
               id="order"
               type="text"
               ref={orderRef}
               maxLength={10}
-              className="border-1 border-orange-700 rounded-lg text-center py-1"
+              className="border-1 border-orange-700 rounded-lg text-center py-1 text-lg lg:text-2xl"
               placeholder="당신의 현재 끌림은?"
             />
-            <Button className="text-2xl lg:text-3xl p-7 lg:p-10 bg-orange-700 hover:bg-red-700 w-full">
+            <Button className="text-2xl lg:text-3xl p-7 lg:p-10 bg-orange-700 hover:bg-red-700 w-full cursor-pointer">
               오늘의 점심은?
             </Button>
           </form>
