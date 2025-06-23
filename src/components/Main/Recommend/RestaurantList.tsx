@@ -33,12 +33,11 @@ export default function RestaurantList({ store, none }: TRestaurantList) {
             </CardDescription>
           </CardHeader>
         )}
-        {(store && !store.title) ||
-          (none && (
-            <CardContent className="w-full h-full px-3 flex items-center justify-center text-xl lg:text-2xl">
-              <strong>적합한 식당을 찾지 못했어요..</strong>
-            </CardContent>
-          ))}
+        {((store && !store.title) || none) && (
+          <CardContent className="w-full h-full px-3 flex items-center justify-center text-xl lg:text-2xl">
+            <strong>적합한 식당을 찾지 못했어요..</strong>
+          </CardContent>
+        )}
         {store && store.title && (
           <CardAction className="w-full flex justify-center">
             <a
