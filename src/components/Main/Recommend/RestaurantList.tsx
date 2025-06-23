@@ -9,6 +9,7 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import type { TStores } from "@/store/useRecommendStore";
+import { parseContent } from "@/util/parseContent";
 
 type TRestaurantList = {
   store?: TStores;
@@ -22,11 +23,13 @@ export default function RestaurantList({ store, none }: TRestaurantList) {
         {store && store.title && (
           <CardHeader className="w-full text-center flex flex-col gap-2 items-center">
             <CardTitle className="text-xl lg:text-2xl w-full text-ellipsis overflow-hidden whitespace-nowrap">
-              {store.title}
+              {parseContent(store.title)}
             </CardTitle>
             <CardDescription className="display flex flex-col gap-1">
               <address className="text-lg lg:text-xl">{store.address}</address>
-              <p className="text-lg lg:text-xl text-[#7F2A0C]">{store.type}</p>
+              <p className="text-lg lg:text-xl text-[#7F2A0C]">
+                {parseContent(store.type)}
+              </p>
             </CardDescription>
           </CardHeader>
         )}
