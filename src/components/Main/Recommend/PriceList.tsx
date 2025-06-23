@@ -18,10 +18,10 @@ export default function PriceList({ type }: TPriceList) {
 
   return (
     <li className="w-full flex flex-col gap-6">
-      <h2 className="text-2xl lg:text-4xl font-bold underline">
+      {/* <h2 className="text-2xl lg:text-4xl font-bold underline">
         {priceLevel[type]}
-      </h2>
-      <ul className="flex-nowrap w-full flex gap-4 overflow-x-auto scrollbar-hide">
+      </h2> */}
+      <ul className="flex-nowrap w-full flex gap-8 overflow-x-auto scrollbar-hide">
         {recommend &&
           recommend[type].map((store, index) => (
             <RestaurantList key={index} store={store} />
