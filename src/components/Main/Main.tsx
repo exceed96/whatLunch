@@ -1,6 +1,6 @@
 // 메인 컴포넌트
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Button } from "../ui/button";
 import Loading from "./Loading";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,7 @@ import { useLocation } from "@/store/useLocation";
 import { useRecommendStore } from "@/store/useRecommendStore";
 
 export default function Main() {
+  const orderRef = useRef<HTMLInputElement>(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const setLocation = useLocation((state) => state.setLocation);
@@ -36,6 +37,7 @@ export default function Main() {
   }, []);
 
   const submitButtonHandler = async () => {
+    console.log(orderRef.current?.value);
     try {
       setIsLoading(true);
       const response = await fetch(`${import.meta.env.VITE_SERVER_API_CALL}`, {
@@ -48,7 +50,7 @@ export default function Main() {
           inputs: {
             latitude: useLocation.getState().latitude,
             longitude: useLocation.getState().longitude,
-            order: "",
+            order: orderRef.current?.value,
             persona: "",
           },
           user: "yub",
@@ -77,12 +79,25 @@ export default function Main() {
           </h1>
           <img alt="main icon" src={mainImage} className="w-1/2 h-1/2" />
           {/* <CurrentAddress /> */}
-          <Button
-            className="text-2xl lg:text-3xl p-7 lg:p-10 bg-orange-700 hover:bg-red-700 w-full"
-            onClick={submitButtonHandler}
+          <form
+            className="flex flex-col items-center justify-center gap-5"
+            onSubmit={submitButtonHandler}
           >
-            오늘의 점심은?
-          </Button>
+            <label htmlFor="order" className="text-xl lg:text-2xl">
+              끌리는거는?
+            </label>
+            <input
+              id="order"
+              type="text"
+              ref={orderRef}
+              maxLength={10}
+              className="border-1 border-orange-700 rounded-lg text-center py-1"
+              placeholder="당신의 현재 끌림은?"
+            />
+            <Button className="text-2xl lg:text-3xl p-7 lg:p-10 bg-orange-700 hover:bg-red-700 w-full">
+              오늘의 점심은?
+            </Button>
+          </form>
         </div>
       )}
     </main>

@@ -11,6 +11,7 @@
     "pwa": "pwa-assets-generator --preset minimal public/logo.svg"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.1.1",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
     "@tailwindcss/vite": "^4.1.10",
@@ -23,11 +24,13 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-helmet-async": "^2.0.5",
+    "react-hook-form": "^7.58.1",
     "react-router-dom": "^7.6.2",
     "tailwind-merge": "^3.3.1",
     "tailwind-scrollbar-hide": "^4.0.0",
     "tailwindcss": "^4.1.10",
     "vite-plugin-pwa": "^1.0.0",
+    "zod": "^3.25.67",
     "zustand": "^5.0.5"
   },
   "devDependencies": {
