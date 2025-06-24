@@ -5,26 +5,18 @@ import { Button } from "../ui/button";
 import Loading from "./Loading";
 import { useNavigate } from "react-router-dom";
 import mainImage from "@/assets/image/mainImage.png";
-import { useLocation } from "@/store/useLocation";
+import { useCurrentLocation } from "@/store/useCurrentLocation";
 import { useRecommendStore } from "@/store/useRecommendStore";
+import { getSuccess, getError } from "@/util/geoLocation";
 
 export default function Main() {
   const orderRef = useRef<HTMLInputElement>(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const setLocation = useLocation((state) => state.setLocation);
-  const setCurrentAddress = useLocation((state) => state.setCurrentAddress);
+  const setCurrentAddress = useCurrentLocation(
+    (state) => state.setCurrentAddress
+  );
   const setRecommend = useRecommendStore((state) => state.setRecommend);
-
-  const getSuccess = (position: GeolocationPosition) => {
-    const lat = String(position.coords.latitude);
-    const lng = String(position.coords.longitude);
-    setLocation(lat, lng);
-  };
-
-  const getError = (error: GeolocationPositionError) => {
-    console.log("Loaction Error : ", error);
-  };
 
   useEffect(() => {
     try {
@@ -47,8 +39,8 @@ export default function Main() {
         },
         body: JSON.stringify({
           inputs: {
-            latitude: useLocation.getState().latitude,
-            longitude: useLocation.getState().longitude,
+            latitude: useCurrentLocation.getState().latitude,
+            longitude: useCurrentLocation.getState().longitude,
             order: orderRef.current?.value,
           },
           user: "yub",

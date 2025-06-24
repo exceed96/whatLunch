@@ -2,7 +2,7 @@
 
 import { create } from "zustand";
 
-type TLocationState = {
+type TCurrentLocationState = {
   latitude: string;
   longitude: string;
   currentAddress: string;
@@ -10,7 +10,7 @@ type TLocationState = {
   setCurrentAddress: (currentAddress: string) => void;
 };
 
-export const useLocation = create<TLocationState>((set) => ({
+export const useCurrentLocation = create<TCurrentLocationState>((set) => ({
   latitude: "",
   longitude: "",
   currentAddress: "",

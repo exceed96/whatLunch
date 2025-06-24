@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import CurrentLocationIcon from "@/assets/icon/currentLocationIcon.svg";
-import { useLocation } from "@/store/useLocation";
+import { useCurrentLocation } from "@/store/useCurrentLocation";
 
 export default function CurrentAddress() {
   const [isError] = useState(false);
@@ -16,7 +16,7 @@ export default function CurrentAddress() {
       <p className="text-xl lg:text-2xl">
         {isError
           ? "위치 정보를 불러올수 없습니다."
-          : useLocation.getState().currentAddress}
+          : useCurrentLocation.getState().currentAddress}
       </p>
     </section>
   );
