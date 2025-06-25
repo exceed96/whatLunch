@@ -26,7 +26,7 @@ export default function RestaurantList({ store, none }: TRestaurantList) {
               {parseContent(store.title)}
             </CardTitle>
             <CardDescription className="display flex flex-col gap-1">
-              <address className="text-lg lg:text-xl">{store.address}</address>
+              {/* <address className="text-lg lg:text-xl">{store.address}</address> */}
               <p className="text-lg lg:text-xl text-[#7F2A0C]">
                 {parseContent(store.type)}
               </p>
@@ -44,8 +44,8 @@ export default function RestaurantList({ store, none }: TRestaurantList) {
               className="text-orange-700 hover:bg-orange-700 hover:text-white text-md lg:text-2xl py-1 lg:py-2 px-4 lg:px-6 rounded-xl cursor-pointer"
               target="_blank"
               href={`https://map.naver.com/p/search/${parseContent(
-                store.title
-              )}`}
+                store.address
+              )}${store.title}}`}
             >
               위치보기
             </a>
