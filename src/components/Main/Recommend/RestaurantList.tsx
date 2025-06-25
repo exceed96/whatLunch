@@ -45,7 +45,7 @@ export default function RestaurantList({ store, none }: TRestaurantList) {
               target="_blank"
               href={`https://map.naver.com/p/search/${parseContent(
                 store.address
-              )}${store.title}}`}
+              )}${store.title}`}
             >
               위치보기
             </a>
