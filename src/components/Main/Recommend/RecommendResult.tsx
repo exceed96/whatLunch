@@ -19,7 +19,6 @@ export default function RecommendResult() {
   //   if (!useRecommendStore.getState().recommend) navigate("/");
   // }, []);
 
-  console.log("recommend : ", useRecommendStore.getState().recommend);
   return (
     <div className="flex flex-col gap-10 relative">
       <div className="flex justify-center items-center relative">

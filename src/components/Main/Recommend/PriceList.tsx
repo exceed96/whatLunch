@@ -10,7 +10,6 @@ import { useRecommendStore } from "@/store/useRecommendStore";
 export default function PriceList() {
   const recommend = useRecommendStore((state) => state.recommend);
 
-  console.log("recommend : ", recommend);
   // const priceLevel = {
   //   low: "10,000원 이하",
   //   middle: "20,000원 이하",
