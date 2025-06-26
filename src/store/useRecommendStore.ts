@@ -10,17 +10,17 @@ export type TStores = {
   type: string;
 };
 
-type TRecommendation = {
-  low: TStores[];
-  middle: TStores[];
-  high: TStores[];
-};
+// type TRecommendation = {
+//   low: TStores[];
+//   middle: TStores[];
+//   high: TStores[];
+// };
 
 type TRecommendStore = {
-  recommend?: TRecommendation;
-  setRecommend: (recommend: TRecommendation) => void;
+  recommend?: TStores[];
+  setRecommend: (recommend: TStores[]) => void;
 };
 
 export const useRecommendStore = create<TRecommendStore>((set) => ({
-  setRecommend: (recommend: TRecommendation) => set({ recommend: recommend }),
+  setRecommend: (recommend: TStores[]) => set({ recommend: recommend }),
 }));

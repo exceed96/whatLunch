@@ -1,22 +1,25 @@
 // 추천 결과 컴포넌트
 
 import { useState } from "react";
-import PriceList from "./PriceList";
+// import PriceList from "./PriceList";
 import backIcon from "@/assets/icon/backIcon.svg";
 import CurrentAddress from "../CurrentAddress";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useRecommendStore } from "@/store/useRecommendStore";
-import { useEffect } from "react";
+// import { useEffect } from "react";
+import RestaurantList from "./RestaurantList";
 
 export default function RecommendResult() {
   const navigate = useNavigate();
   const [isClick, setIsClick] = useState(false);
+  const recommend = useRecommendStore((state) => state.recommend);
 
-  useEffect(() => {
-    if (!useRecommendStore.getState().recommend) navigate("/");
-  }, []);
+  // useEffect(() => {
+  //   if (!useRecommendStore.getState().recommend) navigate("/");
+  // }, []);
 
+  console.log("recommend : ", useRecommendStore.getState().recommend);
   return (
     <div className="flex flex-col gap-10 relative">
       <div className="flex justify-center items-center relative">
@@ -32,9 +35,16 @@ export default function RecommendResult() {
       </div>
       <CurrentAddress />
       <ul className="w-full flex flex-col gap-20">
-        <PriceList type="low" />
-        <PriceList type="middle" />
-        <PriceList type="high" />
+        {recommend && recommend.length ? (
+          recommend.map((store, index) => (
+            <RestaurantList key={index} store={store} />
+          ))
+        ) : (
+          <RestaurantList none={true} />
+        )}
+        {/* <PriceList /> */}
+        {/* <PriceList type="middle" />
+        <PriceList type="high" /> */}
       </ul>
       <Button
         className="sticky bottom-1 right-0 z-20 text-xl lg:text-3xl py-7 bg-orange-800 text-white"
