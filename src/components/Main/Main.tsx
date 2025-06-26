@@ -12,6 +12,7 @@ import { getSuccess, getError } from "@/util/geoLocation";
 export default function Main() {
   const orderRef = useRef<HTMLInputElement>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
   const setCurrentAddress = useCurrentLocation(
     (state) => state.setCurrentAddress
@@ -29,6 +30,7 @@ export default function Main() {
   }, []);
 
   const submitButtonHandler = async () => {
+    setIsError(false);
     try {
       setIsLoading(true);
       const response = await fetch(`${import.meta.env.VITE_SERVER_API_CALL}`, {
@@ -50,11 +52,12 @@ export default function Main() {
       const data = await response.json();
       setRecommend(JSON.parse(data.data.outputs.result).recommendations);
       setCurrentAddress(JSON.parse(data.data.outputs.result).address);
+      navigate("/result");
     } catch (error) {
       console.log("Api Error : ", error);
+      setIsError(true);
     } finally {
       setIsLoading(false);
-      navigate("/result");
     }
   };
 
@@ -84,9 +87,14 @@ export default function Main() {
               className="border-1 border-orange-700 rounded-lg text-center py-1 text-lg lg:text-2xl"
               placeholder="당신의 현재 끌림은?"
             />
-            <Button className="text-2xl lg:text-3xl p-7 lg:p-10 bg-orange-700 hover:bg-red-700 w-full cursor-pointer">
+            <Button className="text-2xl lg:text-3xl p-7 lg:p-10 bg-orange-700 hover:bg-red-700 w-fit cursor-pointer">
               오늘의 점심은?
             </Button>
+            {isError && (
+              <p className="text-red-700 text-lg lg:text-2xl">
+                오류가 발생했습니다. 다시 시도해주세요.
+              </p>
+            )}
           </form>
         </div>
       )}
