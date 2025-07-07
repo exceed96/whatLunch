@@ -1,0 +1,15 @@
+# Build Files
+node_modules/
+build/
+ 
+# Editor preferences
+.editorconfig
+.dockerignore
+.git/
+.no-git/
+.vscode/
+ 
+# ENV files
+ 
+# Other non-production dotfiles
+.eslintrc
